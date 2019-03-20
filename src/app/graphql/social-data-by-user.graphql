@@ -1,0 +1,6 @@
+query socialDataByUser($id: String!) {
+  getNotesByUser(email: $id) {
+    createdAt
+    platform
+  }
+}

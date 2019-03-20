@@ -1,0 +1,54 @@
+# This is sample IDL schema for GraphQL Faker.
+#
+# https://github.com/APIs-guru/graphql-faker
+#
+# npm run gql:faker
+
+type Query {
+  getNotes(platform: String!): [Note]
+  allNotes: [Note]
+  getNotesByUser(email: String!): [Note]
+  getNotesBySubject(name: String!): [Note]
+  getSentiment(text: String): Sentiment
+  searchNotes(search: param, value: String!): [Note]
+}
+
+type Note {
+  verb: String @examples(values: ["created", "replied"])
+  title: String @fake(type: hackerPhrase, locale: en_AU)
+  text: String! @fake(type: lorem, options: { loremSize: paragraphs }, locale: en_AU)
+  objParentRef: String @fake(type: url, locale: en_AU)
+  objParentName: String @fake(type: lorem, options: { loremSize: words }, locale: en_AU)
+  objGroupRef: String @fake(type: url, locale: en_AU)
+  objGroupName: String @fake(type: lorem, options: { loremSize: words }, locale: en_AU)
+  createdAt: String @fake(type: pastDate, locale: en_AU)
+  updatedAt: String @fake(type: recentDate, locale: en_AU)
+  platform: String @examples(values: ["Canvas"])
+  author: User
+  sentiment: Sentiment
+}
+
+enum param {
+  subject
+  email
+  platform
+  verb
+  title
+}
+
+type Sentiment {
+  neg: Float
+    @fake(type: number, options: { minNumber: 0.1, maxNumber: 0.9, precisionNumber: 0.001 })
+  neu: Float
+    @fake(type: number, options: { minNumber: 0.1, maxNumber: 0.9, precisionNumber: 0.001 })
+  pos: Float
+    @fake(type: number, options: { minNumber: 0.1, maxNumber: 0.9, precisionNumber: 0.001 })
+  compound: Float
+    @fake(type: number, options: { minNumber: -1, maxNumber: 1, precisionNumber: 0.001 })
+}
+
+type User {
+  name: String @fake(type: fullName, locale: en_AU)
+  email: String @fake(type: email, locale: en_AU)
+  role: String @examples(values: ["instructor"])
+}

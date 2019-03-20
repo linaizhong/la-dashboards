@@ -1,0 +1,22 @@
+<div class="chart" *ngIf="(visible$ | async)" [style.width.px]="width" [style.height.px]="height">
+  <h2 class="title">{{ title }}</h2>
+  <ngx-charts-polar-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [animations]="animations"
+    [autoScale]="autoScale"
+	[labelTrim]="labelTrim"
+	[labelTrimSize]="labelTrimSize"
+    *ngIf="(result | async) as results"
+    [results]="results"
+  >
+  </ngx-charts-polar-chart>
+</div>

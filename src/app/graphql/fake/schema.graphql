@@ -1,0 +1,45 @@
+type Note {
+  _id: ID!
+  verb: String
+  title: String
+  text: String!
+  objParentRef: String
+  objParentName: String
+  objGroupRef: String
+  objGroupName: String
+  createdAt: String
+  updatedAt: String
+  platform: String
+  author: User
+  sentiment: Sentiment
+}
+
+enum param {
+  subject
+  email
+  platform
+  verb
+  title
+}
+
+type Query {
+  getNotes(platform: String!): [Note]
+  allNotes: [Note]
+  getNotesByUser(email: String!): [Note]
+  getNotesBySubject(name: String!): [Note]
+  getSentiment(text: String): Sentiment
+  searchNotes(search: param, value: String!): [Note]
+}
+
+type Sentiment {
+  neg: Float
+  neu: Float
+  pos: Float
+  compound: Float
+}
+
+type User {
+  name: String
+  email: String
+  role: String
+}

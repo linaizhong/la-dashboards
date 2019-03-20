@@ -1,0 +1,72 @@
+type Note {
+  _id: ID!
+  verb: String
+  title: String
+  text: String!
+  parentRef: String
+  parentName: String
+  groupRef: String
+  groupName: String
+  createdAt: String
+  updatedAt: String
+  platform: String
+  author: User
+  sentiment: Sentiment
+}
+
+type Occupation {
+  title: String
+  uri: String
+  skills: [Skill]
+}
+
+type Ontask {
+  email: [String]!
+  name: [String]!
+  count: [Int]!
+}
+
+enum param {
+  subject
+  email
+  platform
+  verb
+  title
+}
+
+type Query {
+  getNotes(platform: String!): [Note]
+  allNotes: [Note]
+  getNotesByUser(email: String!): [Note]
+  getNotesBySubject(name: String!): [Note]
+  getSentiment(text: String): Sentiment
+  searchNotes(search: param, value: String!): [Note]
+  getOccupations(search: String!): [Occupation]
+  getOnTask: Ontask
+  getQuiz(search: param, value: String!): [Quiz]
+}
+
+type Quiz {
+  score: Float
+  title: String
+  verb: String
+  author: User!
+}
+
+type Sentiment {
+  neg: Float
+  neu: Float
+  pos: Float
+  compound: Float
+}
+
+type Skill {
+  title: String
+  uri: String
+}
+
+type User {
+  name: String
+  email: String
+  role: String
+}

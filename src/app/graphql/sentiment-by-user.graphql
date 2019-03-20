@@ -1,0 +1,11 @@
+query sentimentByUser($id: String!) {
+  searchNotes(search: email, value: $id) {
+    createdAt
+    sentiment {
+      neg
+      neu
+      compound
+      pos
+    }
+  }
+}

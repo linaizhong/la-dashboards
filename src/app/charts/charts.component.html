@@ -1,0 +1,34 @@
+<mat-sidenav-container class="options-container" [hasBackdrop]="true">
+  <mat-sidenav mode="over" #optionsSidenav>
+    <section>
+      <div *ngFor="let item of options">
+        <mat-checkbox [checked]="item.value" (change)="toggle($event, item.key)">{{
+          item.key
+        }}</mat-checkbox>
+      </div>
+    </section>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="optionsSidenav.toggle()">
+      <mat-icon class="mat-24">menu</mat-icon>
+    </button>
+    <div fxLayout="row wrap" fxFill fxLayoutAlign="start start">
+      <app-stacked-vertical-bar
+        [title]="'Sentiment Over Time'"
+        [data]="getSentimentByUser()"
+        [selector]="chartsState.select('stacked_vertical_bar__getSentimentByUser')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Sentiment'"
+      ></app-stacked-vertical-bar>
+      <app-line-chart
+        [title]="'Social Data'"
+        [data]="getSocialDataByPlatform()"
+        [selector]="chartsState.select('line_chart__getSocialDataByPlatform')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Platform'"
+        [width]="1000"
+        [height]="300"
+      ></app-line-chart>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

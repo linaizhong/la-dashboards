@@ -1,0 +1,41 @@
+<h2>Canvas Quiz</h2>
+
+
+<table class="table-data">
+  <tr>
+    <th>Email</th>
+    <th *ngFor="let head of activities">{{head}}</th>
+  </tr>
+  <tr *ngFor="let gr of ontask">
+    <td>{{gr.email}}</td>
+    <td *ngFor="let head of gr.grid">{{head.score}}</td>
+  </tr>
+</table>
+
+<br />
+<!--
+<table>
+  <tr><th>Email</th><th>Activity</th><th>Score</th></tr>
+<tr *ngFor="let course of quizzes">
+
+  <td>{{course.email}}</td>
+  <td>{{course.activity}} </td>
+  <td>{{course.value}} </td>
+
+</tr>
+
+</table>
+-->
+<!--
+<table mat-table [dataSource]="ontask" class="mat-elevation-z8">
+
+  <ng-container *ngFor="let hname of activities" cdkColumnDef="hname">
+    <th cdk-header-cell *cdkHeaderCellDef> hname </th>
+    <td cdk-cell *cdkCellDef="let row"> {{row.hname}} </td>
+  </ng-container>
+
+
+
+
+</table>
+-->

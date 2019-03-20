@@ -1,0 +1,5 @@
+query socialDataByPlatform($platform: String!) {
+  searchNotes(search: platform, value: $platform) {
+    createdAt
+  }
+}

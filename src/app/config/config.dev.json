@@ -1,0 +1,6 @@
+{
+  "config": {
+    "environment": "development",
+    "graphqlUri": "http://localhost:9002/graphql"
+  }
+}

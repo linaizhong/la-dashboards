@@ -1,0 +1,26 @@
+query sentimentByPlatform($name: String!) {
+  searchNotes(search: platform, value: $name) {
+	verb
+	title
+	text
+	courseRef
+	course
+	activityRef
+	activity
+	subjectRef
+	updatedAt
+	platform
+	author {
+		name
+		email
+		role
+	}
+    createdAt
+    sentiment {
+      neg
+      neu
+      compound
+      pos
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<mat-sidenav-container class="options-container" [hasBackdrop]="true">
+  <mat-sidenav mode="over" #optionsSidenav>
+    <section>
+      <div *ngFor="let item of options">
+        <mat-checkbox [checked]="item.value" (change)="toggle($event, item.key)">{{
+          item.key
+        }}</mat-checkbox>
+      </div>
+    </section>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="optionsSidenav.toggle()">
+      <mat-icon class="mat-24">menu</mat-icon>
+    </button>
+    <div fxLayout="row wrap" fxFill fxLayoutAlign="start start">
+      <app-stacked-vertical-bar
+        [title]="'Sentiment Over Time 1'"
+        [data]="getSentimentByUser()"
+        [selector]="chartsState.select('stacked_vertical_bar__getSentimentByUser1')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Sentiment'"
+      ></app-stacked-vertical-bar>
+      <app-line-chart
+        [title]="'Social Data 1'"
+        [data]="getSocialDataByPlatform()"
+        [selector]="chartsState.select('line_chart__getSocialDataByPlatform1')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Platform'"
+        [width]="1200"
+        [height]="300"
+      ></app-line-chart>
+      <app-line-chart
+        [title]="'Social Data 2'"
+        [data]="getSocialDataByPlatform()"
+        [selector]="chartsState.select('line_chart__getSocialDataByPlatform2')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Platform'"
+      ></app-line-chart>
+      <app-stacked-vertical-bar
+        [title]="'Sentiment Over Time 2'"
+        [data]="getSentimentByUser()"
+        [selector]="chartsState.select('stacked_vertical_bar__getSentimentByUser2')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Sentiment'"
+      >"getSentimentByUser()"</app-stacked-vertical-bar>
+      <app-line-chart
+        [title]="'Social Data 3'"
+        [data]="getSocialDataByPlatform()"
+        [selector]="chartsState.select('line_chart__getSocialDataByPlatform3')"
+        [xAxisLabel]="'Created Date'"
+        [yAxisLabel]="'Platform'"
+      ></app-line-chart> 
+	  
+	  <app-polar-chart
+        [title]="'Polar Chart'"
+        [data]="getQuizByVerb()"
+        [selector]="chartsState.select('polar_chart__getQuizByVerb1')"
+        [xAxisLabel]="''"
+        [yAxisLabel]="''"
+		[labelTrim]="true"
+		[width]="800"
+		[labelTrimSize]="30"
+		[trimYAxisTicks] = "false"
+      ></app-polar-chart> 
+	  
+	  
+	  <app-line-chart
+        [title]="'Average Quiz Score'	"
+        [data]="getQuizByVerbForTest1()"
+        [selector]="chartsState.select('line_chart__getQuizByVerb2')"
+        [xAxisLabel]="'Quiz'"
+        [yAxisLabel]="'Score'"
+      ></app-line-chart> 
+	  
+	  <app-stacked-vertical-bar
+	    [title]="'Average Quiz Score'"
+        [data]="getQuizByVerbForTest2()"
+        [selector]="chartsState.select('stacked_vertical_bar__getQuizByVerb3')"
+        [xAxisLabel]="'Average Quiz Score'"
+        [yAxisLabel]="'Avg Score'"	  
+	  ></app-stacked-vertical-bar>
+	  
+	  <app-stacked-vertical-bar
+        [title]="'Average Student Quiz Score'"
+        [data]="getQuizByVerbForTest3()"
+        [selector]="chartsState.select('stacked_vertical_bar__getQuizByVerb4')"
+        [xAxisLabel]="'Student'"
+        [yAxisLabel]="'Score'"
+		[width]="800"
+      ></app-stacked-vertical-bar> 
+	  
+	  <app-stacked-vertical-bar
+        [title]="'Student Average Quiz Score'"
+        [data]="getQuizByVerbForTest4()"
+        [selector]="chartsState.select('stacked_vertical_bar__getQuizByVerb5')"
+        [xAxisLabel]="'Quiz'"
+        [yAxisLabel]="'Score'"
+      ></app-stacked-vertical-bar> 
+	  
+	  <app-stacked-vertical-bar
+        [title]="'Average Compound Student Sentiment'"
+        [data]="getSentimentByPlatform1()"
+        [selector]="chartsState.select('stacked_vertical_bar__getSentimentByPlatform1')"
+        [xAxisLabel]="'Student'"
+        [yAxisLabel]="'Compound Sentiment'"
+		[width]="1000"
+      ></app-stacked-vertical-bar> 
+	  
+	  <app-stacked-vertical-bar
+        [title]="'Student Message Sentiment'"
+        [data]="getSentimentByPlatform2()"
+        [selector]="chartsState.select('stacked_vertical_bar__getSentimentByPlatform2')"
+        [xAxisLabel]="'Date'"
+        [yAxisLabel]="'Score'"
+		[width]="1200"
+      ></app-stacked-vertical-bar> 
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

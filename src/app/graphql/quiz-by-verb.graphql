@@ -1,0 +1,9 @@
+query quizByVerb($value: String!) {
+  getQuiz(search: verb, value: $value) {
+    score
+    title
+	  author {
+		  name
+	  }
+  }
+}

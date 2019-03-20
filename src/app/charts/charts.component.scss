@@ -1,0 +1,21 @@
+.options-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+section {
+  padding: 1.2em;
+}
+
+::ng-deep h2.title {
+  text-align: center;
+}
+
+// ::ng-deep div.chart {
+//   width: 700px;
+//   height: 500px;
+// }
